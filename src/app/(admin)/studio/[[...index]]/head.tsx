@@ -6,7 +6,7 @@ import { NextStudioHead } from 'next-sanity/studio/head';
 export default function CustomStudioHead() {
   return (
     <>
-      <title>MS Buy | Admin</title>
+      <title>Trendy Stocky | Admin</title>
       <NextStudioHead favicons={false} />
       <link
         rel="icon"

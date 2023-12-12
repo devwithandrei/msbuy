@@ -3,14 +3,14 @@ import { StudioNavbar } from './src/components/StudioNavbar';
 import { Config } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { schemaTypes } from './schemas';
-import { msTheme } from './src/theme';
+import { msTheme } from './src/components/theme';
 
 export const config: Config = {
   name: 'default',
-  title: 'MS Buy',
+  title: 'Trendy-Stocky-Studio',
   basePath: '/studio',
 
-  projectId: 'gbmlc5y8',
+  projectId: 'ifvgjaz0',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],

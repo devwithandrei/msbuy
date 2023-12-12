@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactStars from 'react-stars';
-import { colors } from '@src/theme';
+import { colors } from '@src/components/theme';
 import { IRating } from '@src/model';
 import { Flex, Text } from '@chakra-ui/react';
 

@@ -43,7 +43,7 @@ export const WishlistItem = ({ item }: WishlistItemProps) => {
 
       <GridItem>
         <Text fontWeight="bold" fontSize="xs">
-          $ {item.price}
+         € {item.price}
         </Text>
       </GridItem>
 

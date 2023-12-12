@@ -15,9 +15,10 @@ import { BsTrash } from 'react-icons/bs';
 
 interface CartItemProps {
   item: IItem;
+  onClose: () => void; // Adding onClose prop to handle closing the drawer
 }
 
-export const CartItem = ({ item }: CartItemProps) => {
+export const CartItem = ({ item, onClose }: CartItemProps) => {
   const { increaseCount, decreaseCount, removeItem } = useContext(AppContext);
 
   return (
@@ -36,12 +37,14 @@ export const CartItem = ({ item }: CartItemProps) => {
             rounded="full"
             borderWidth="1px"
             borderColor="gray.300"
+            cursor="pointer"
+            onClick={onClose} // Close the drawer when clicking the product image
           />
         </Link>
       </GridItem>
       <GridItem colSpan={{ base: 5, lg: 3 }}>
         <Link href={`/products/${item.slug}`}>
-          <Text>{item.name}</Text>
+          <Text cursor="pointer" onClick={onClose}>{item.name}</Text>
         </Link>
       </GridItem>
       <GridItem colSpan={{ base: 3, lg: 2 }} justifyContent="flex-end">
@@ -60,7 +63,7 @@ export const CartItem = ({ item }: CartItemProps) => {
         </HStack>
       </GridItem>
       <GridItem textAlign="right" colSpan={{ base: 2, lg: 1 }}>
-        <Text fontWeight="bold">$ {item.price * item.count}</Text>
+        <Text fontWeight="bold">€{item.price * item.count}</Text>
       </GridItem>
       <GridItem textAlign="right">
         <Button

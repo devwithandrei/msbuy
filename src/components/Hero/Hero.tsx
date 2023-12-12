@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { Box, Button, Card, Heading, Image, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
@@ -18,6 +19,24 @@ export const Hero = ({
   btnLabel,
   btnLink,
 }: IHeroProps) => {
+  const [displayedText, setDisplayedText] = useState('');
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= heading.length) {
+        setDisplayedText(heading.substring(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 100); // Adjust typing speed by changing the interval duration
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [heading]);
+
   return (
     <Card
       direction={{ base: 'column', md: 'row' }}
@@ -32,7 +51,7 @@ export const Hero = ({
       mb="2rem"
     >
       <Box mx="2rem" w={{ base: '100%', md: '50%' }}>
-        <Heading size="2xl">{heading}</Heading>
+        <Heading size="2xl">{displayedText}</Heading>
         <Text py="1rem">{description}</Text>
 
         <Link href={btnLink}>

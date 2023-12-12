@@ -67,7 +67,7 @@ export const Footer = () => {
             <Box>
               <AppLogo />
             </Box>
-            <Text fontSize="sm">© 2023 MS Buy. All rights reserved</Text>
+            <Text fontSize="sm">© 2023 Trendy Stocky. All rights reserved</Text>
             <Stack direction="row" spacing={6}>
               <SocialButton label="Twitter" href={'#'}>
                 <FaTwitter />

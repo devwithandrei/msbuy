@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import { colors } from '@src/theme';
+import { colors } from '@src/components/theme';
 import Link from 'next/link';
 import React, { CSSProperties } from 'react';
 import { NavbarProps } from 'sanity';

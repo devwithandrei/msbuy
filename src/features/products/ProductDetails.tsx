@@ -1,4 +1,5 @@
 'use client';
+import React, { useContext, useState } from 'react';
 import {
   Box,
   Button,
@@ -7,20 +8,15 @@ import {
   Grid,
   GridItem,
   Heading,
-  Image,
   Link,
   Stack,
   Text,
 } from '@chakra-ui/react';
 import { AddToWishlistButton } from '@src/components/AddToWishlistButton';
-import { AddToCartButton } from '@src/components/Cart/AddToCartButton';
 import { CustomBreadcrumb } from '@src/components/CustomBreadcrumb';
-import { Quantity } from '@src/components/Quantity/Quantity';
-import { Rating } from '@src/components/Rating';
 import { AppContext } from '@src/context/AppContext';
 import { getSubstring } from '@src/helpers';
 import { IBreadcrumbItem, IProduct } from '@src/model';
-import React, { useContext, useState } from 'react';
 
 interface ProductDetailsProps {
   product: IProduct;
@@ -40,6 +36,11 @@ const items: IBreadcrumbItem[] = [
 export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [quantity, setQuantity] = useState(1);
   const { isAdded, addItem, resetItems } = useContext(AppContext);
+  const [selectedImage, setSelectedImage] = useState(product?.mainImage);
+
+  const handleImageClick = (image: string) => {
+    setSelectedImage(image);
+  };
 
   return (
     <>
@@ -65,40 +66,38 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
       >
         <GridItem p="1rem" pos="relative">
           <AddToWishlistButton product={product} />
-          <Image src={product?.mainImage} alt={product.name} mx="auto" />
-          {/* TODO: fix product gallery */}
+          <img src={selectedImage} alt={product.name} onClick={() => handleImageClick(product?.mainImage)} />
           <Flex>
             {product.gallery?.length !== 0 &&
-              product.gallery?.map((image, i) => (
-                <Image
+              product.gallery?.map((image: string, i: number) => (
+                <img
                   key={i}
                   src={image}
                   alt={product.name}
-                  mx="auto"
-                  boxSize="70px"
-                  rounded="md"
-                  shadow="sm"
-                  borderWidth="1px"
-                  borderColor="gray.100"
-                />
+                  onClick={() => handleImageClick(image)}
+                  style={{
+                  width: "70px", 
+                  height: "70px", 
+                  borderRadius: "md",
+                  boxShadow: "sm",
+                  borderWidth: "1px",
+                  borderColor: "gray.100",
+                  margin: "auto",
+                }}
+              />
               ))}
           </Flex>
         </GridItem>
         <GridItem p="1rem">
           <Heading>{product.name}</Heading>
           <Text my="1rem">{product.description}</Text>
-          <Rating rating={product.rating} />
+          {/* Add your Rating component here */}
 
           <Text fontWeight="bold" fontSize="2rem">
-            ${product.price}
+            €{product.price}
           </Text>
           <Divider my="1rem" />
-          <Quantity
-            setQuantity={(_valueAsString, valueAsNumber) =>
-              setQuantity(valueAsNumber)
-            }
-            disabled={isAdded('cart', product.id)}
-          />
+          {/* Add your Quantity component here */}
           <Divider my="1rem" />
           <Box>
             <Link href="/checkout">
@@ -120,7 +119,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                 Buy Now
               </Button>
             </Link>
-            <AddToCartButton product={product} count={quantity} />
+            {/* Add your AddToCartButton component here */}
           </Box>
 
           <Stack py="2rem">

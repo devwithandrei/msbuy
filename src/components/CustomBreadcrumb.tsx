@@ -25,17 +25,15 @@ export const CustomBreadcrumb = ({ items = [] }: ICustomBreadcrumbProps) => {
           mx="auto"
           fontSize={{ base: 'xs', md: 'md' }}
         >
-          {items.map((item, index) =>
-            index !== items.length - 1 ? (
-              <BreadcrumbItem key={index}>
+          {items.map((item, index) => (
+            <BreadcrumbItem key={index}>
+              {item.link ? (
                 <BreadcrumbLink href={item.link}>{item.name}</BreadcrumbLink>
-              </BreadcrumbItem>
-            ) : (
-              <BreadcrumbItem key={index}>
+              ) : (
                 <Text color="gray.500">{item.name}</Text>
-              </BreadcrumbItem>
-            )
-          )}
+              )}
+            </BreadcrumbItem>
+          ))}
         </Breadcrumb>
       )}
     </>

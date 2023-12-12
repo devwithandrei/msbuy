@@ -1,7 +1,7 @@
 'use client';
 import 'swiper/swiper.min.css';
 import { Navbar } from '@/components/Navbar/NavBar';
-import { theme } from '@/theme';
+import { theme } from '@src/components/theme';
 import { CacheProvider } from '@chakra-ui/next-js';
 import { ChakraProvider } from '@chakra-ui/react';
 import AppContextProvider from '@src/context/AppContext';
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>MS BUY</title>
+        <title>Trendy Stocky</title>
         <meta title="description" content="Buy anything online" />
         <link
           rel="icon"

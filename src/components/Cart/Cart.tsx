@@ -79,13 +79,15 @@ export const Cart = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader color="brand.primary">
-            Cart ( {cart.length} Items )
+            Cart ({cart.length} Items)
           </DrawerHeader>
           <DrawerBody>
             {cart.length === 0 ? (
               <>Your Cart is Empty</>
             ) : (
-              cart.map((item) => <CartItem key={item.id} item={item} />)
+              cart.map((item) => (
+                <CartItem key={item.id} item={item} onClose={onClose} />
+              ))
             )}
           </DrawerBody>
           {cart.length !== 0 && (
@@ -114,7 +116,9 @@ export const Cart = () => {
                   </Button>
                 </Link>
               </Box>
-              <Box fontWeight="bold">Total: $ {calculateItemsTotal(cart)}</Box>
+              <Box fontWeight="bold">
+                Total: € {calculateItemsTotal(cart)}
+              </Box>
             </DrawerFooter>
           )}
         </DrawerContent>
