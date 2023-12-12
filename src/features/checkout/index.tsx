@@ -73,7 +73,7 @@ export const Checkout = () => {
                   </Flex>
                   <Box textAlign="right">
                     <Text fontWeight="bold" fontSize={{ base: 'md', lg: 'lg' }}>
-                      ${formatPrice(item.price)}
+                    €{formatPrice(item.price)}
                     </Text>
                     <Text fontSize={{ base: 'sm', lg: 'md' }}>
                       Quantity: {item.count}
@@ -166,27 +166,27 @@ export const Checkout = () => {
             <Box>
               <Flex justify="space-between" align="center" my="1rem">
                 <Text fontWeight="bold">Sub Total</Text>
-                <Text fontWeight="bold">${formatPrice(subTotal)}</Text>
+                <Text fontWeight="bold">€{formatPrice(subTotal)}</Text>
               </Flex>
 
               <Flex justify="space-between" align="center" my="1rem">
                 <Text fontWeight="bold">Tax(10%)</Text>
-                <Text fontWeight="bold">${formatPrice(tax)}</Text>
+                <Text fontWeight="bold">€{formatPrice(tax)}</Text>
               </Flex>
 
               <Flex justify="space-between" align="center" my="1rem">
                 <Text fontWeight="bold">Coupon Discount</Text>
-                <Text fontWeight="bold">-${formatPrice(tax)}</Text>
+                <Text fontWeight="bold">-€{formatPrice(tax)}</Text>
               </Flex>
 
               <Flex justify="space-between" align="center" my="1rem">
                 <Text fontWeight="bold">Shipping Cost</Text>
-                <Text fontWeight="bold">-${formatPrice(0)}</Text>
+                <Text fontWeight="bold">-€{formatPrice(0)}</Text>
               </Flex>
               <Divider />
               <Flex justify="space-between" align="center" my="1rem">
                 <Text fontWeight="bold">Total</Text>
-                <Text fontWeight="bold">${formatPrice(subTotal)}</Text>
+                <Text fontWeight="bold">€{formatPrice(subTotal)}</Text>
               </Flex>
             </Box>
 
@@ -202,7 +202,7 @@ export const Checkout = () => {
                 bgColor: 'brand.primaryDark',
               }}
             >
-              Pay ${formatPrice(subTotal)}
+              Pay €{formatPrice(subTotal)}
             </Button>
           </CardBody>
         </Card>
